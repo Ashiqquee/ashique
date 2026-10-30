@@ -37,6 +37,7 @@ To check the production build locally, run `npm start` after `npm run build`.
 | Projects list | `projects` array in `app/page.tsx` |
 | Contact links | `contact` array in `app/page.tsx` |
 | Page title and description | `app/layout.tsx` |
+| Painting on the right (screens 1100px and wider) | the `<aside>` in `app/page.tsx` (image is `public/water-lilies.webp`) |
 | Link preview image and its alt text | `app/opengraph-image.jpg`, `app/opengraph-image.alt.txt` |
 | Favicon | `app/icon.png`, `app/apple-icon.png` |
 | Colours (light and dark) and fonts | `app/globals.css` |
@@ -82,4 +83,4 @@ The site is fully static. On [Vercel](https://vercel.com), import the repository
 ## Credits
 
 - Project and company logos belong to their owners: Codely, Convyflow, Dialogen, GetTravelHelp, Forma and Nivlet.
-- The boats painting in the link preview (`app/opengraph-image.jpg`) came from [Pinterest](https://in.pinterest.com/pin/974959019326481392/). Its artist is not yet identified, so the rights to use it still need to be confirmed.
+- The painting on the right and in the link preview is Claude Monet, *Water Lilies (Nymphéas)*, 1907. It is in the public domain; the image comes from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Monet,_Claude_-_Water_Lilies_(Nymph%C3%A9as)_-_Google_Art_Project.jpg).

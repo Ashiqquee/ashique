@@ -71,7 +71,7 @@ export function Bio() {
           , custom AI voice agents for support desks, reservations and help lines.
         </p>
         <p>
-          I can help you build whatever you need.{" "}
+          We can build whatever you need.{" "}
           <a href={`mailto:${EMAIL}`} className="prose-link">
             Tell me what you need
           </a>
