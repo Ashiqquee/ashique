@@ -1,8 +1,8 @@
-import { Geist } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import Image from "next/image";
 import { Bio } from "./bio";
 
-const geist = Geist({ subsets: ["latin"], weight: "400" });
+const geistMono = Geist_Mono({ subsets: ["latin"], weight: "400" });
 
 const projects = [
   {
@@ -126,7 +126,7 @@ export default function Home() {
               preload
             />
             <p
-              className={`${geist.className} pointer-events-none absolute inset-0 flex items-center justify-center text-[17px] tracking-[-0.01em] text-white [text-shadow:0_1px_12px_rgb(0_0_0/0.5)]`}
+              className={`${geistMono.className} pointer-events-none absolute top-6 left-7 text-[13px] tracking-[-0.02em] text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0/0.3)]`}
             >
               everything will be fine
             </p>
