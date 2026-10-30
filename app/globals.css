@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Iowan Old Style ships with macOS/iOS; elsewhere it falls back to Palatino or Georgia. */
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Iowan Old Style"), local("IowanOldStyle-Roman"), local("Iowan Old Style BT");
+}
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Iowan Old Style Italic"), local("IowanOldStyle-Italic");
+}
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Iowan Old Style Bold"), local("IowanOldStyle-Bold");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --bg: #fff;
+  --text-copy: #282828;
+  --text-heading: #282828;
+  --text-secondary: #504945;
+  --text-nav: #676767;
+  --surface-subtle: #f3f3f2;
+  --line-subtle: color-mix(in srgb, var(--text-copy) 10%, transparent);
+  --page-pad: clamp(1.25rem, 3.4vw, 3.25rem);
+  --content-width: 600px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #1b1a19;
+    --text-copy: #e8e5df;
+    --text-heading: #f4f1eb;
+    --text-secondary: #cbc6be;
+    --text-nav: #aaa59e;
+    --surface-subtle: #242321;
   }
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-copy: var(--text-copy);
+  --color-heading: var(--text-heading);
+  --color-secondary: var(--text-secondary);
+  --color-nav: var(--text-nav);
+  --color-surface: var(--surface-subtle);
+  --color-line: var(--line-subtle);
+  --font-reading: "Iowan Old Style Local", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  background: var(--bg);
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: gray transparent;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text-copy);
+  font-family: var(--font-reading);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+@layer components {
+  /* Inline prose links: muted, with a faint underline that firms up on hover. */
+  .prose-link {
+    color: var(--text-nav);
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in srgb, var(--text-nav) 30%, transparent);
+    text-underline-offset: 0.18em;
+    transition:
+      color 0.3s ease-in-out,
+      text-decoration-color 0.3s ease-in-out;
+  }
+  .prose-link:hover {
+    color: var(--text-secondary);
+    text-decoration-color: color-mix(in srgb, var(--text-secondary) 30%, transparent);
+  }
+
+  /* Hovering a list dims every row except the one under the pointer. */
+  @media (hover: hover) and (pointer: fine) {
+    .dim-siblings > * {
+      transition: opacity 0.3s ease-in-out;
+    }
+    .dim-siblings:hover > * {
+      opacity: 0.8;
+    }
+    .dim-siblings:hover > *:hover {
+      opacity: 1;
+    }
+  }
 }

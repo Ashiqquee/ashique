@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ashique.work
 
-## Getting Started
+Personal site of Muhammed Ashique, a software engineer from Kerala, India.
 
-First, run the development server:
+A single static page: a short bio, projects and contact links, with an image panel on wide screens. The layout and typography follow [leerob.com](https://leerob.com).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack), React 19, TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com) (configured in `app/globals.css`; there is no `tailwind.config.js`)
+- Fonts: Iowan Old Style (built into macOS and iOS, falls back to Palatino or Georgia), the system sans-serif for small UI text, and Geist for the line on the image
+
+> This Next.js version has breaking changes from older docs. Read the guides in `node_modules/next/dist/docs/` before changing framework code (see `AGENTS.md`).
+
+## Develop
+
+Requires Node.js 22 and npm 10.
+
+```sh
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Before pushing:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run lint && npx tsc --noEmit && npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To check the production build locally, run `npm start` after `npm run build`.
 
-## Learn More
+## Editing content
 
-To learn more about Next.js, take a look at the following resources:
+| What | Where |
+| --- | --- |
+| Bio text (Default and Long) | `app/bio.tsx` |
+| Projects list | `projects` array in `app/page.tsx` |
+| Contact links | `contact` array in `app/page.tsx` |
+| Image on the right, and the line over it | the `<aside>` in `app/page.tsx` (image is `public/mountains.webp`) |
+| Page title and description | `app/layout.tsx` |
+| Link preview image and its alt text | `app/opengraph-image.jpg`, `app/opengraph-image.alt.txt` |
+| Favicon | `app/icon.png`, `app/apple-icon.png` |
+| Colours (light and dark) and fonts | `app/globals.css` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding a project or brand logo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Each logo needs two transparent PNGs in `public/logos/`:
 
-## Deploy on Vercel
+- `name.png`: 64×64, shown inline next to the name
+- `name-cursor.png`: 32×32, used as the mouse cursor when hovering the link
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Then add an entry to `projects` in `app/page.tsx`. In the bio, use the `BrandLink` component in `app/bio.tsx` with `logo="name"`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Features
+
+- Bio with a **Default / Long** toggle
+- Inline logos for every company and project, and logo-shaped cursors on hover
+- Light and dark mode that follow the system setting
+- Image panel on screens 1100px and wider; hidden on phones and tablets
+- Hovering a project row dims the others
+
+## Security
+
+Headers are set for every route in `next.config.ts`:
+
+- `Content-Security-Policy`: only the site's own scripts, styles, fonts and images, with no embedding in other sites. It doesn't use nonces because nonces would make the page render dynamically. `'unsafe-eval'` is added in development only, because React needs it there.
+- `Strict-Transport-Security`, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` (camera, microphone and location disabled)
+- `X-Powered-By` is turned off
+
+The site has no forms, API routes, secrets or environment variables.
+
+## SEO
+
+- Title, description and canonical URL (`https://ashique.work`)
+- Open Graph and Twitter cards with a 1200×630 preview image
+- `robots.txt` and `sitemap.xml` (`app/robots.ts`, `app/sitemap.ts`)
+
+Last checked on 30 October 2026 against the production build: Lighthouse scored 100 for accessibility, best practices and SEO on desktop and mobile. LCP was 0.92s with 4× CPU slowdown on Fast 4G, and CLS was 0.
+
+## Deploy
+
+The site is fully static. On [Vercel](https://vercel.com), import the repository with the default Next.js settings and add the `ashique.work` domain. If you deploy to a different domain, update `metadataBase` in `app/layout.tsx`, `app/robots.ts` and `app/sitemap.ts`.
+
+## Credits
+
+- Project and company logos belong to their owners: Codely, Convyflow, Dialogen, GetTravelHelp, Forma and Nivlet.
+- The mountain painting (`public/mountains.webp`) came from [Pinterest](https://in.pinterest.com/pin/750201250478564207/). Its artist is not yet identified, so the rights to use it still need to be confirmed.
