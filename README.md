@@ -2,7 +2,7 @@
 
 Personal site of Muhammed Ashique, a software engineer from Kerala, India.
 
-A single static page: a short bio, projects and contact links, with an image panel on wide screens. The layout and typography follow [leerob.com](https://leerob.com).
+A single static page: a short bio, projects and contact links. The layout and typography follow [leerob.com](https://leerob.com).
 
 ## Stack
 
@@ -36,7 +36,6 @@ To check the production build locally, run `npm start` after `npm run build`.
 | Bio text (Default and Long) | `app/bio.tsx` |
 | Projects list | `projects` array in `app/page.tsx` |
 | Contact links | `contact` array in `app/page.tsx` |
-| Image on the right | the `<aside>` in `app/page.tsx` (image is `public/boats.webp`) |
 | Page title and description | `app/layout.tsx` |
 | Link preview image and its alt text | `app/opengraph-image.jpg`, `app/opengraph-image.alt.txt` |
 | Favicon | `app/icon.png`, `app/apple-icon.png` |
@@ -56,7 +55,6 @@ Then add an entry to `projects` in `app/page.tsx`. In the bio, use the `BrandLin
 - Bio with a **Default / Long** toggle
 - Inline logos for every company and project, and logo-shaped cursors on hover
 - Light and dark mode that follow the system setting
-- Image panel on screens 1100px and wider; hidden on phones and tablets
 - Hovering a project row dims the others
 
 ## Security
@@ -84,4 +82,4 @@ The site is fully static. On [Vercel](https://vercel.com), import the repository
 ## Credits
 
 - Project and company logos belong to their owners: Codely, Convyflow, Dialogen, GetTravelHelp, Forma and Nivlet.
-- The boats painting (`public/boats.webp`, also used in `app/opengraph-image.jpg`) came from [Pinterest](https://in.pinterest.com/pin/974959019326481392/). Its artist is not yet identified, so the rights to use it still need to be confirmed.
+- The boats painting in the link preview (`app/opengraph-image.jpg`) came from [Pinterest](https://in.pinterest.com/pin/974959019326481392/). Its artist is not yet identified, so the rights to use it still need to be confirmed.

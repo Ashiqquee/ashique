@@ -113,16 +113,6 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="isolate hidden overflow-hidden rounded-[10px] border border-line bg-surface min-[1100px]:sticky min-[1100px]:top-(--page-pad) min-[1100px]:block min-[1100px]:h-[calc(100svh-2*var(--page-pad))] min-[1100px]:min-h-[min(72svh,760px)]">
-            <Image
-              src="/boats.webp"
-              alt="Painting of two people rowing small boats across water in soft strokes of pink, orange and blue"
-              fill
-              sizes="(min-width: 1100px) 36vw, 1px"
-              className="object-cover"
-              preload
-            />
-          </aside>
         </div>
       </article>
     </main>
