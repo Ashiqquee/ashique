@@ -1,8 +1,5 @@
-import { Geist_Mono } from "next/font/google";
 import Image from "next/image";
 import { Bio } from "./bio";
-
-const geistMono = Geist_Mono({ subsets: ["latin"], weight: "400" });
 
 const projects = [
   {
@@ -118,18 +115,13 @@ export default function Home() {
 
           <aside className="isolate hidden overflow-hidden rounded-[10px] border border-line bg-surface min-[1100px]:sticky min-[1100px]:top-(--page-pad) min-[1100px]:block min-[1100px]:h-[calc(100svh-2*var(--page-pad))] min-[1100px]:min-h-[min(72svh,760px)]">
             <Image
-              src="/mountains.webp"
-              alt="Painting of snowy mountain peaks under a large orange sun, with a river winding through rust-coloured hills"
+              src="/boats.webp"
+              alt="Painting of two people rowing small boats across water in soft strokes of pink, orange and blue"
               fill
               sizes="(min-width: 1100px) 36vw, 1px"
               className="object-cover"
               preload
             />
-            <p
-              className={`${geistMono.className} pointer-events-none absolute top-6 left-7 text-[13px] tracking-[-0.02em] text-white/90 [text-shadow:0_1px_8px_rgb(0_0_0/0.3)]`}
-            >
-              everything will be fine
-            </p>
           </aside>
         </div>
       </article>

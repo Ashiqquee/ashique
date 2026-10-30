@@ -8,7 +8,7 @@ A single static page: a short bio, projects and contact links, with an image pan
 
 - [Next.js 16](https://nextjs.org) (App Router, Turbopack), React 19, TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com) (configured in `app/globals.css`; there is no `tailwind.config.js`)
-- Fonts: Iowan Old Style (built into macOS and iOS, falls back to Palatino or Georgia), the system sans-serif for small UI text, and Geist for the line on the image
+- Fonts: Iowan Old Style (built into macOS and iOS, falls back to Palatino or Georgia) and the system sans-serif for small UI text
 
 > This Next.js version has breaking changes from older docs. Read the guides in `node_modules/next/dist/docs/` before changing framework code (see `AGENTS.md`).
 
@@ -36,7 +36,7 @@ To check the production build locally, run `npm start` after `npm run build`.
 | Bio text (Default and Long) | `app/bio.tsx` |
 | Projects list | `projects` array in `app/page.tsx` |
 | Contact links | `contact` array in `app/page.tsx` |
-| Image on the right, and the line over it | the `<aside>` in `app/page.tsx` (image is `public/mountains.webp`) |
+| Image on the right | the `<aside>` in `app/page.tsx` (image is `public/boats.webp`) |
 | Page title and description | `app/layout.tsx` |
 | Link preview image and its alt text | `app/opengraph-image.jpg`, `app/opengraph-image.alt.txt` |
 | Favicon | `app/icon.png`, `app/apple-icon.png` |
@@ -84,4 +84,4 @@ The site is fully static. On [Vercel](https://vercel.com), import the repository
 ## Credits
 
 - Project and company logos belong to their owners: Codely, Convyflow, Dialogen, GetTravelHelp, Forma and Nivlet.
-- The mountain painting (`public/mountains.webp`) came from [Pinterest](https://in.pinterest.com/pin/750201250478564207/). Its artist is not yet identified, so the rights to use it still need to be confirmed.
+- The boats painting (`public/boats.webp`, also used in `app/opengraph-image.jpg`) came from [Pinterest](https://in.pinterest.com/pin/974959019326481392/). Its artist is not yet identified, so the rights to use it still need to be confirmed.
